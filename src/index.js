@@ -1,5 +1,10 @@
 import axios from 'axios';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
+import SlimSelect from 'slim-select';
+
+new SlimSelect({
+  select: '#single',
+});
 
 axios.defaults.headers.common['x-api-key'] =
   'live_NzqVk2Lk8XZBAri0CPIevLCyJd9M5NVP4r6FWzM4LBnTdRZi4cQ84F5TFDeRoxV2';
