@@ -1,13 +1,7 @@
 import axios from 'axios';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
 import SlimSelect from 'slim-select';
-
-new SlimSelect({
-  select: '#single',
-});
-
-axios.defaults.headers.common['x-api-key'] =
-  'live_NzqVk2Lk8XZBAri0CPIevLCyJd9M5NVP4r6FWzM4LBnTdRZi4cQ84F5TFDeRoxV2';
+import 'slim-select/dist/slimselect.css';
 
 export const elements = {
   list: document.querySelector('.breed-select'),
@@ -18,11 +12,15 @@ export const elements = {
 
 // console.log(elements.list);
 
-fetchBreeds().then(resp => {
-  elements.list.innerHTML = createMarkup(resp);
-  elements.loader.style.display = 'none';
-  elements.list.style.display = 'block';
-});
+fetchBreeds()
+  .then(resp => {
+    elements.list.innerHTML = createMarkup(resp);
+    // elements.loader.style.display = 'none';
+    elements.list.style.display = 'block';
+  })
+  .catch(err => {
+    elements.error.style.display = 'block';
+  });
 
 function createMarkup(arr) {
   return arr
@@ -42,11 +40,12 @@ function onChange(evt) {
     .then(resp => {
       // console.log(resp);
       createMarkupCats(resp);
-      elements.loader.style.display = 'none';
+      // elements.loader.style.display = 'none';
       elements.catInfo.style.display = 'block';
+      elements.error.style.display = 'none';
     })
     .catch(err => {
-      console.log(err);
+      elements.error.style.display = 'block';
     });
 }
 

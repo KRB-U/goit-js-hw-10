@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { elements } from '.';
+import { Notify } from 'notiflix';
+
+axios.defaults.headers.common['x-api-key'] =
+  'live_NzqVk2Lk8XZBAri0CPIevLCyJd9M5NVP4r6FWzM4LBnTdRZi4cQ84F5TFDeRoxV2';
 
 function fetchBreeds() {
   return axios
     .get(`https://api.thecatapi.com/v1/breeds`)
     .then(resp => resp.data)
     .catch(function (error) {
-      console.log(error);
+      Notify.failure(error.message);
     });
   // .finally(function () {
   // });
@@ -23,7 +27,7 @@ function fetchCatByBreed(breedId) {
       return response.data;
     })
     .catch(err => {
-      console.log(err);
+      Notify.failure(err.message);
     });
 }
 

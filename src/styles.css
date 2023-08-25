@@ -5,6 +5,7 @@
   display: flex;
 }
 .loader {
+  color: red;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -34,6 +35,11 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.loaderkeys {
+  width: 100px;
+  height: 100px;
 }
 
 .breed-select {
