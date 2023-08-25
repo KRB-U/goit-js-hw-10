@@ -35,11 +35,13 @@
     transform: rotate(360deg);
   }
 }
+
 .breed-select {
   display: none;
   margin-left: 50%;
   margin-right: 50%;
 }
+
 .cat-info {
   width: 750px;
   display: flex;

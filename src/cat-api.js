@@ -1,4 +1,7 @@
-const fetchBreeds = function fetchBreeds() {
+import axios from 'axios';
+import { elements } from '.';
+
+function fetchBreeds() {
   return axios
     .get(`https://api.thecatapi.com/v1/breeds`)
     .then(resp => resp.data)
@@ -6,14 +9,14 @@ const fetchBreeds = function fetchBreeds() {
       console.log(error);
     });
   // .finally(function () {
-  //   // выполняется всегда
   // });
-};
+}
 
-const fetchCatByBreed = function fetchCatByBreed(breedId) {
+function fetchCatByBreed(breedId) {
   return axios
     .get(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
     .then(response => {
+      console.log(response);
       if (response.data.length === 0) {
         throw error;
       }
@@ -22,6 +25,6 @@ const fetchCatByBreed = function fetchCatByBreed(breedId) {
     .catch(err => {
       console.log(err);
     });
-};
+}
 
 export { fetchBreeds, fetchCatByBreed };
