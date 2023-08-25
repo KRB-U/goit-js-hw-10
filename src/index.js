@@ -1,24 +1,27 @@
 import axios from 'axios';
+import { fetchBreeds } from './cat-api';
+
 const elements = {
   list: document.querySelector('.breed-select'),
   loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
   catInfo: document.querySelector('.cat-info'),
 };
+
 axios.defaults.headers.common['x-api-key'] =
   'live_NzqVk2Lk8XZBAri0CPIevLCyJd9M5NVP4r6FWzM4LBnTdRZi4cQ84F5TFDeRoxV2';
 
-function fetchBreeds() {
-  return axios
-    .get(`https://api.thecatapi.com/v1/breeds`)
-    .then(resp => resp.data)
-    .catch(function (error) {
-      console.log(error);
-    });
-  // .finally(function () {
-  //   // выполняется всегда
-  // });
-}
+// function fetchBreeds() {
+//   return axios
+//     .get(`https://api.thecatapi.com/v1/breeds`)
+//     .then(resp => resp.data)
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// .finally(function () {
+//   // выполняется всегда
+// });
+// }
 
 fetchBreeds().then(resp => {
   elements.list.innerHTML = createMarkup(resp);
@@ -32,19 +35,19 @@ function createMarkup(arr) {
     .join('');
 }
 
-function fetchCatByBreed(breedId) {
-  return axios
-    .get(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
-    .then(response => {
-      if (response.data.length === 0) {
-        throw error;
-      }
-      return response.data;
-    })
-    .catch(err => {
-      console.log(err);
-    });
-}
+// function fetchCatByBreed(breedId) {
+//   return axios
+//     .get(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
+//     .then(response => {
+//       if (response.data.length === 0) {
+//         throw error;
+//       }
+//       return response.data;
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// }
 
 elements.list.addEventListener('change', onChange);
 
@@ -64,6 +67,7 @@ function onChange(evt) {
       console.log(err);
     });
 }
+
 function createMarkupCats(cats) {
   cats.map(cat => {
     const { temperament, description, name } = cat.breeds[0];
