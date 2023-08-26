@@ -35,7 +35,7 @@ function onChange(evt) {
   elements.catInfo.style.display = 'none';
 
   const catId = evt.target.value;
-
+  console.log(catId);
   fetchCatByBreed(catId)
     .then(resp => {
       // console.log(resp);
