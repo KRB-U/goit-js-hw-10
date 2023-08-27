@@ -15,7 +15,7 @@ export const elements = {
 fetchBreeds()
   .then(resp => {
     elements.list.innerHTML = createMarkup(resp);
-    // elements.loader.style.display = 'none';
+    elements.loader.style.display = 'none';
     elements.list.style.display = 'block';
   })
   .catch(err => {
@@ -40,19 +40,20 @@ function onChange(evt) {
     .then(resp => {
       // console.log(resp);
       createMarkupCats(resp);
-      // elements.loader.style.display = 'none';
-      elements.catInfo.style.display = 'block';
+      elements.catInfo.style.display = 'flex';
+      elements.loader.style.display = 'none';
       elements.error.style.display = 'none';
     })
     .catch(err => {
       elements.error.style.display = 'block';
+      elements.loader.style.display = 'none';
     });
 }
 
 function createMarkupCats(cats) {
   cats.map(cat => {
     const { temperament, description, name } = cat.breeds[0];
-    return (elements.catInfo.innerHTML = `<img src="${cat.url}" alt="${name}" height:'200' width ='250'/>
+    return (elements.catInfo.innerHTML = `<img src="${cat.url}" alt="${name}" height = 200 width = 250/>
         <div class = "box">
            <h2>${name}</h2>
            <p>${description}</p>
@@ -60,3 +61,20 @@ function createMarkupCats(cats) {
          </div>`);
   });
 }
+
+//=============
+// function showLoadingElements(status) {
+//   if (status === 'load') {
+//     ref.select.classList.add('is-hidden');
+//     ref.loader_line.classList.remove('is-hidden');
+//   } else {
+//     ref.select.classList.remove('is-hidden');
+//     ref.loader_line.classList.add('is-hidden');
+//   }
+// }
+
+// function showLoadingCatElement(status) {
+//   status === 'load'
+//     ? ref.loader_round.classList.remove('is-hidden')
+//     : ref.loader_round.classList.add('is-hidden');
+// }

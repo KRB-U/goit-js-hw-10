@@ -42,10 +42,15 @@
   height: 100px;
 } */
 
+.error {
+  display: none;
+}
+
 .breed-select {
   display: none;
-  margin-left: 50%;
-  margin-right: 50%;
+  margin-bottom: 20px;
+  /* margin-left: 50%; */
+  /* margin-right: 50%; */
 }
 
 .cat-info {
