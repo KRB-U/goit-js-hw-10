@@ -76,20 +76,3 @@ function createMarkupCats(cats) {
          </div>`);
   });
 }
-
-//=============
-// function showLoadingElements(status) {
-//   if (status === 'load') {
-//     ref.select.classList.add('is-hidden');
-//     ref.loader_line.classList.remove('is-hidden');
-//   } else {
-//     ref.select.classList.remove('is-hidden');
-//     ref.loader_line.classList.add('is-hidden');
-//   }
-// }
-
-// function showLoadingCatElement(status) {
-//   status === 'load'
-//     ? ref.loader_round.classList.remove('is-hidden')
-//     : ref.loader_round.classList.add('is-hidden');
-// }
