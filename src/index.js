@@ -68,7 +68,7 @@ function onChange(evt) {
 function createMarkupCats(cats) {
   cats.map(cat => {
     const { temperament, description, name } = cat.breeds[0];
-    return (elements.catInfo.innerHTML = `<img src="${cat.url}" alt="${name}" height = 200 width = 250/>
+    return (elements.catInfo.innerHTML = `<img src="${cat.url}" alt="${name}"  width = 300/>
         <div class = "box">
            <h2>${name}</h2>
            <p>${description}</p>
